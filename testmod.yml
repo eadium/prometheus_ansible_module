@@ -1,0 +1,15 @@
+- name: prometheus parser
+  hosts: localhost
+  tasks:
+  - name: run the prometheus parser module
+    prom_info:
+      metrics: 
+        - node_memory_MemAvailable_bytes
+        - node_memory_MemFree_bytes
+      hosts:
+        - 83.149.198.111
+        - 83.149.198.129
+    register: testout
+  - name: dump test output
+    debug:
+      msg: '{{ testout }}'
